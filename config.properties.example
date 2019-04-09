@@ -1,0 +1,9 @@
+#Write the token here. Not optional.
+token=
+#Write a single character prefix here for bot commands. Not optional:
+prefix=
+#Write the server names of the game for api connections here and separate them with comma. Not optional.
+#Example: alpha,primera,suna,secura
+servers=
+#If you want to see the command logs on a discord channel type the id of the channel here. Optional.
+log_channel_id=

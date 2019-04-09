@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <filter class="com.raepheles.discord.edrops.logfilters.ConsoleFilter" />
+        <encoder>
+            <Pattern>
+                %d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n
+            </Pattern>
+        </encoder>
+    </appender>
+
+    <appender name="DEBUG-LOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>debug.log</file>
+        <filter class="com.raepheles.discord.edrops.logfilters.DebugFilter" />
+        <encoder>
+            <Pattern>
+                %d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n
+            </Pattern>
+        </encoder>
+
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <!-- Daily log -->
+            <fileNamePattern>archived logs/debug/debug.%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+            <maxFileSize>10MB</maxFileSize>
+            <maxHistory>30</maxHistory>
+            <totalSizeCap>1GB</totalSizeCap>
+        </rollingPolicy>
+    </appender>
+
+    <appender name="TRACE-LOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>trace.log</file>
+        <filter class="com.raepheles.discord.edrops.logfilters.TraceFilter" />
+        <encoder>
+            <Pattern>
+                %d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n
+            </Pattern>
+        </encoder>
+
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <!-- Daily log -->
+            <fileNamePattern>archived logs/trace/trace.%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+            <maxFileSize>10MB</maxFileSize>
+            <maxHistory>30</maxHistory>
+            <totalSizeCap>1GB</totalSizeCap>
+        </rollingPolicy>
+    </appender>
+
+    <root level="trace">
+        <appender-ref ref="STDOUT" />
+        <appender-ref ref="DEBUG-LOG" />
+        <appender-ref ref="TRACE-LOG" />
+    </root>
+
+</configuration>
